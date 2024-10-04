@@ -1,7 +1,7 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
+	name: "The Tree Tree Tree",
+	id: "1024gg",
+	author: "The1024gg",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
 
@@ -14,7 +14,7 @@ let modInfo = {
 // Set your version in num and name
 let VERSION = {
 	num: "0.0",
-	name: "Literally nothing",
+	name: "Starting",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -42,7 +42,9 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
+	let gain = new Decimal(0)
+	if (hasUpgrade("p",11)) gain = gain.plus(1)
+	if (hasUpgrade("p",12)) gain = gain.plus(1)
 	return gain
 }
 
@@ -56,7 +58,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("e1000000"))
 }
 
 
