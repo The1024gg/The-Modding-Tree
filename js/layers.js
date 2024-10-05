@@ -37,7 +37,7 @@ addLayer("p", {
 			title: "Boosting",
 			description: "x2 more points.",
 			cost: new Decimal(1),
-			unlocked() {return hasUpgrade("11"}
+			unlocked() { return hasUpgrade("11") },
 		}
 	}
 })
