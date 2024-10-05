@@ -29,15 +29,15 @@ addLayer("p", {
 		rows: 3,
 		cols: 4,
 		11: {
-			name: "The Start",
+			title: "The Start",
 			description: "Gain 1 point per second.",
 			cost: new Decimal(1)
 		},
 		12: {
-			name: "Boosting",
+			title: "Boosting",
 			description: "x2 more points.",
 			cost: new Decimal(1),
-			unlocked{return hasUpgrade("11"}
+			unlocked() {return hasUpgrade("11"}
 		}
 	}
 })
