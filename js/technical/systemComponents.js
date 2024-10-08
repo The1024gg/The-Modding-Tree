@@ -154,7 +154,7 @@ var systemComponents = {
             <tr>
                 <td><button class="opt" onclick="save()">Save</button></td>
                 <td><button class="opt" onclick="toggleOpt('autosave')">Autosave: {{ options.autosave?"ON":"OFF" }}</button></td>
-                <td><button class="opt" onclick="hardReset()">WIPE!!!</button></td>
+                <td><button class="opt" style-"color: red;" onclick="hardReset()">WIPE!!!</button></td>
             </tr>
             <tr>
                 <td><button class="opt" onclick="exportSave()">Export to clipboard</button></td>
