@@ -13,14 +13,11 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Starting",
+	num: "0.0.1",
+	name: "4 upgrades?",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+let changelog = `tw.2s4.me has a changelog you dont need this one!`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -45,6 +42,8 @@ function getPointGen() {
 	let gain = new Decimal(0)
 	if (hasUpgrade('p',11)) gain = gain.plus(1)
 	if (hasUpgrade('p',12)) gain = gain.plus(1)
+	if (hasUpgrade('p',13)) gain = gain.times(upgradeEffect('p',13))
+	if (hasUpgrade('p',14)) gain = gain.times(1.5)
 	return gain
 }
 
