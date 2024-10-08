@@ -56,5 +56,16 @@ addLayer("p", {
 			cost: new Decimal(20),
 			unlocked() { return hasUpgrade('p',13) },
 		},
+		21: {
+			title: "More?",
+			description: "Multiplies prestige points based off of points again.",
+			cost: new Decimal(50),
+			effect() {
+				return player.points.add(1).pow(0.1)
+			},
+			effectDisplay() { return 'x' + format(upgradeEffect(this.layer, this.id))},
+			tooltip: "(points+1)<sup>0.1</sup>",
+			unlocked() { return hasUpgrade('p',14) },
+		},
 	}
 })
