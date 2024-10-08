@@ -70,7 +70,7 @@ var displayThings = [
 			return "If 1 point is a gramm, you'd have " + format(player.points.div(1000)) + "kg"
 		}
 		if (player.points.lte(1.619e20)) {
-			return "If 1 point is a gramm, you'd have " + format(player.points.div(1e6)) + "tonne"
+			return "If 1 point is a gramm, you'd have " + format(player.points.div(1e6)) + " tonne"
 		}
 		return "If you write 1 digit/s, you'd have to write for " + formatTime(player.points.log10().floor())
 	}
