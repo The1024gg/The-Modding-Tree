@@ -1,3 +1,82 @@
+addLayer("a", {
+    name: "achievements", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+    }},
+    color: "#FFFF00",
+    requires: new Decimal(80085), // Can be a function that takes requirement increases into account
+    tooltip: "Achievements",
+    resource: "achis", // Name of prestige currency
+    baseResource: "points", // Name of resource prestige is based on
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "none", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 2, // Prestige currency exponent
+    achievements: {
+        11: {
+            name: "The first one's always free",
+            tooltip: "If you don't have this, you don't exist",
+            done() {return true}
+        },
+	12: {
+		name: "You gotta start somewhere",
+		tooltip: "Get 1 prestige point.",
+		done() {return player['p'].points.gte(1)}
+	},
+	13: {
+		name: "First productions",
+		tooltip: "Get prestige upgrade 11",
+		done() {return hasUpgrade('p',11)}
+	},
+	14: {
+		name: "DYNAMIC BOOSTS?",
+		tooltip: "Get prestige upgrade 14",
+		done() {return hasUpgrade('p',14)}
+	},
+	15: {
+		name: "The another row",
+		tooltip: "Get prestige upgrade 21",
+		done() {return hasUpgrade('p',21)}
+	},
+	16: {
+		name: "Dynamic again",
+		tooltip: "Get prestige upgrade 24",
+		done() {return hasUpgrade('p',24)}
+	},
+	17: {
+		name: "HALF LIFE 3 CONFIRMED",
+		tooltip: "Get prestige upgrade 31",
+		done() {return hasUpgrade('p',31)}
+	},
+	18: {
+		name: "3333Tri",
+		tooltip: "Get prestige upgrade 33",
+		done() {return hasUpgrade('p',33)}
+	},
+	19: {
+		name: "New layer?",
+		tooltip: "Unlock steel",
+		done() {return hasUpgrade('p',34)}
+	},
+	21: {
+		name: "Steelie awaits...",
+		tooltip: "Get 1 steel",
+		done() {return player['s'].points.gte(1)}
+	},
+	22: {
+		name: "Foundry unlocked",
+		tooltip: "Get steel upgrade 11",
+		done() {return hasUpgrade('s',11)}
+	},
+	23: {
+		name: "Scrap Metal",
+		tooltip: "Get 10 steel",
+		done() {return player['s'].points.gte(10)}
+	},
+    }
+})
 addLayer("p", {
     name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
