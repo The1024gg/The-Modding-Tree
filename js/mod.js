@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1.2",
-	name: "Upgrading Upgrades",
+	num: "0.0.1.3",
+	name: "The End of v0.0.x",
 }
 
 let changelog = `tw.2s4.me has a changelog you dont need this one!`
@@ -49,6 +49,9 @@ function getPointGen() {
 	if (hasUpgrade('p',22)) gain = gain.times(1.35)
 	if (hasUpgrade('p',23)) gain = gain.times(2)
 	if (hasUpgrade('p',24)) gain = gain.times(upgradeEffect('p',24))
+	if (hasUpgrade('p',31)) gain = gain.times(1.15)
+	if (hasUpgrade('p',32)) gain = gain.times(1.5)
+	if (hasUpgrade('p',33)) gain = gain.times(2)
 	return gain
 }
 
