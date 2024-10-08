@@ -52,6 +52,8 @@ function getPointGen() {
 	if (hasUpgrade('p',31)) gain = gain.times(1.15)
 	if (hasUpgrade('p',32)) gain = gain.times(1.5)
 	if (hasUpgrade('p',33)) gain = gain.times(2)
+	if (hasUpgrade('p',41)) gain = gain.times(1.05)
+	if (hasUpgrade('p',42)) gain = gain.times(1.45)
 	// Steel
 	if (hasUpgrade('s',11)) gain = gain.times(3)
 	if (hasUpgrade('s',12)) gain = gain.times(upgradeEffect('s',12))
