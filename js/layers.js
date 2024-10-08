@@ -27,7 +27,7 @@ addLayer("p", {
     layerShown(){return true},
 	upgrades: {
 		rows: 3,
-		cols: 3,
+		cols: 4,
 		11: {
 			title: "Begin",
 			description: "Gain 1 point per second.",
@@ -38,6 +38,23 @@ addLayer("p", {
 			description: "Gain 1 point per second again.",
 			cost: new Decimal(1),
 			unlocked() { return hasUpgrade('p',11) },
+		},
+		13: {
+			title: "Scalar",
+			description: "Multiplies points based off of points",
+			cost: new Decimal(5),
+			effect() {
+				return player.points.add(1).pow(0.4)
+			},
+			effectDisplay() { return 'x' + format(upgradeEffect(this.layer, this.id))},
+			tooltip: "(points+1)<sup>0.4</sup>",
+			unlocked() { return hasUpgrade('p',12) },
+		},
+		14: {
+			title: "Points boost points",
+			description: "x1.5 point gain.",
+			cost: new Decimal(20),
+			unlocked() { return hasUpgrade('p',13) },
 		},
 	}
 })
