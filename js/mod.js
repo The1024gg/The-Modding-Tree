@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1",
-	name: "4 upgrades?",
+	num: "0.0.1.1",
+	name: "Another",
 }
 
 let changelog = `tw.2s4.me has a changelog you dont need this one!`
