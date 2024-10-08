@@ -27,7 +27,7 @@ addLayer("p", {
     ],
     layerShown(){return true},
 	upgrades: {
-		rows: 3,
+		rows: 4,
 		cols: 4,
 		11: {
 			title: "Begin",
@@ -115,6 +115,18 @@ addLayer("p", {
 			cost: new Decimal(1000),
 			unlocked() { return hasUpgrade('p',33) },
 		},
+		41: {
+			title: "Conversion",
+			description: "x1.05 point gain.",
+			cost: new Decimal(20000),
+			unlocked() { return hasUpgrade('s',11) },
+		},
+		42: {
+			title: "Conversion II",
+			description: "x1.45 point gain.",
+			cost: new Decimal(50000),
+			unlocked() { return hasUpgrade('p',12) },
+		},
 	}
 })
 addLayer("s", {
@@ -169,4 +181,5 @@ addLayer("s", {
 			cost: new Decimal(5),
 			unlocked() { return hasUpgrade('s',12) },
 		},
+	}
 })
