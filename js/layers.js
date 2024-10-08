@@ -6,7 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    color: "#808080",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -89,6 +89,30 @@ addLayer("p", {
 			effectDisplay() { return 'x' + format(upgradeEffect(this.layer, this.id))},
 			tooltip: "(points+1)<sup>0.09</sup>",
 			unlocked() { return hasUpgrade('p',23) },
+		},
+		31: {
+			title: "Booster",
+			description: "x1.15 point gain.",
+			cost: new Decimal(150),
+			unlocked() { return hasUpgrade('p',24) },
+		},
+		32: {
+			title: "Where's the Double?",
+			description: "x1.5 point gain.",
+			cost: new Decimal(200),
+			unlocked() { return hasUpgrade('p',31) },
+		},
+		33: {
+			title: "Doubled but Again",
+			description: "x2 point gain.",
+			cost: new Decimal(300),
+			unlocked() { return hasUpgrade('p',32) },
+		},
+		34: {
+			title: "The end of Prestige...",
+			description: "Unlock a new layer.",
+			cost: new Decimal(1000),
+			unlocked() { return hasUpgrade('p',33) },
 		},
 	}
 })
