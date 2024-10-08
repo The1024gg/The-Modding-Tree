@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0.1.1",
-	name: "Another",
+	num: "0.0.1.2",
+	name: "Upgrading Upgrades",
 }
 
 let changelog = `tw.2s4.me has a changelog you dont need this one!`
@@ -40,11 +40,15 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(0)
+	// Layer 1
 	if (hasUpgrade('p',11)) gain = gain.plus(1)
 	if (hasUpgrade('p',12)) gain = gain.plus(1)
 	if (hasUpgrade('p',13)) gain = gain.times(upgradeEffect('p',13))
 	if (hasUpgrade('p',14)) gain = gain.times(1.5)
 	if (hasUpgrade('p',21)) gain = gain.times(upgradeEffect('p',21))
+	if (hasUpgrade('p',22)) gain = gain.times(1.35)
+	if (hasUpgrade('p',23)) gain = gain.times(2)
+	if (hasUpgrade('p',24)) gain = gain.times(upgradeEffect('p',24))
 	return gain
 }
 
