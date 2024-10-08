@@ -67,5 +67,28 @@ addLayer("p", {
 			tooltip: "(points+1)<sup>0.1</sup>",
 			unlocked() { return hasUpgrade('p',14) },
 		},
+		22: {
+			title: "Base Point gain is 1.35x",
+			description: "x1.35 point gain.",
+			cost: new Decimal(75),
+			unlocked() { return hasUpgrade('p',21) },
+		},
+		23: {
+			title: "Doubled",
+			description: "x2 point gain.",
+			cost: new Decimal(90),
+			unlocked() { return hasUpgrade('p',22) },
+		},
+		24: {
+			title: "More but Reversed",
+			description: "Multiplies prestige points based off of points again but another?",
+			cost: new Decimal(100),
+			effect() {
+				return player.points.add(1).pow(0.09)
+			},
+			effectDisplay() { return 'x' + format(upgradeEffect(this.layer, this.id))},
+			tooltip: "(points+1)<sup>0.09</sup>",
+			unlocked() { return hasUpgrade('p',23) },
+		},
 	}
 })
