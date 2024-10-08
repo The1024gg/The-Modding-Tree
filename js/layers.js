@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('s',13)) mult = mult.times(2)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -115,4 +116,57 @@ addLayer("p", {
 			unlocked() { return hasUpgrade('p',33) },
 		},
 	}
+})
+addLayer("s", {
+    name: "steel", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "S", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#aaaaaa",
+    requires: new Decimal(1000), // Can be a function that takes requirement increases into account
+    resource: "steel", // Name of prestige currency
+    branches: ['p'],
+    baseResource: "prestige points", // Name of resource prestige is based on
+    baseAmount() {return player.p.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent: 0.5, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "s", description: "S: Reset for steel", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return hasUpgrade('basic', 34) || player.rebirth.unlocked},
+	upgrades: {
+		rows: 2,
+		cols: 4,
+		11: {
+			title: "Foundry",
+			description: "2 new prestige upgrades, x3 point gain.",
+			cost: new Decimal(1),
+		12: {
+			title: "Generator",
+			description: "Boost point gain multiplier.",
+			cost: new Decimal(2),
+			effect() {
+				return player.points.add(1).pow(0.2)
+			},
+			effectDisplay() { return 'x' + format(upgradeEffect(this.layer, this.id))},
+			tooltip: "(points+1)<sup>0.2</sup>",
+			unlocked() { return hasUpgrade('s',11) },
+		},
+		13: {
+			title: "Charger",
+			description: "x2 prestige gain.",
+			cost: new Decimal(5),
+			unlocked() { return hasUpgrade('s',12) },
+		},
 })
