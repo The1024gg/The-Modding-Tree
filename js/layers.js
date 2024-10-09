@@ -235,7 +235,7 @@ addLayer("s", {
     hotkeys: [
         {key: "s", description: "S: Reset for steel", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasUpgrade('basic', 34) || player.rebirth.unlocked},
+    layerShown(){return hasUpgrade('basic', 34) || player.s.unlocked},
 	upgrades: {
 		rows: 2,
 		cols: 4,
