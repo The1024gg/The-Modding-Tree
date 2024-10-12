@@ -7,7 +7,7 @@ let modInfo = {
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -42,9 +42,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(0)
-	if (hasUpgrade('p',11)) gain = gain.plus(1)
-	if (hasUpgrade('p',12)) gain = gain.plus(1)
+	let gain = new Decimal(1)
 	return gain
 }
 
@@ -54,11 +52,23 @@ function addedPlayerData() { return {
 
 // Display extra things at the top of the page
 var displayThings = [
+	function() {
+		if (player.points.lte(1e3)) {
+			return "If 1 point is a gramm, you'd have " + format(player.points) + "g"
+		}
+		if (player.points.lte(1e6)) {
+			return "If 1 point is a gramm, you'd have " + format(player.points.div(1000)) + "kg"
+		}
+		if (player.points.lte(1.619e20)) {
+			return "If 1 point is a gramm, you'd have " + format(player.points.div(1e6)) + " tonne"
+		}
+		return "If you write 1 digit/s, you'd have to write for " + formatTime(player.points.log10().floor())
+	}
 ]
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e1000000"))
+	return player.points.gte(new Decimal("e280000000"))
 }
 
 
