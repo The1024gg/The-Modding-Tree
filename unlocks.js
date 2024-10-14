@@ -20,7 +20,7 @@ addLayer("adds", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: side, // Row the layer is in on the tree (0 is the first row)
+    row: "side", // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "u", description: "U: Reset for unlocks", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
