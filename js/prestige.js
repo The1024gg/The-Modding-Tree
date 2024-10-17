@@ -13,5 +13,11 @@ addLayer("p", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
-    layerShown(){return.player.adds.points.gte(1)}
+    layerShown(){return.player.adds.points.gte(1)},
+	upgrades: {
+		11: {
+			title: "Doubler",
+			description: "x2 point gain",
+			cost: new Decimal(1)
+		}
 }
