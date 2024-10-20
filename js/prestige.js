@@ -33,27 +33,5 @@ addLayer("p", {
 			cost: new EN(3),
 			unlocked() {return player.adds.points.gte(2)}
 		},
-		14: {
-            title: "Boosting I",
-            description: "Basic points boost point fragments.",
-            cost: new Decimal(3),
-            effect() {
-                eff = softcap(eff, new Decimal("ee8"), 0.5)
-                eff = softcap(eff, new Decimal("ee50"), 0.4)
-                return eff
-            },
-            effectDisplay() {
-                let softcapDescription = ""
-                let upgEffect = upgradeEffect(this.layer, this.id)
-                if (upgEffect.gte(new Decimal("e100000000")) ) {
-                    softcapDescription = " (softcapped)"
-                }
-                if (upgEffect.gte(new Decimal("e1e50")) ) {
-                    softcapDescription = " (softcapped^2)"
-                }
-                return (upgEffect)+"x" + softcapDescription
-            },
-            unlocked() { return player.adds.poins.gte(2) },
-		}
 	}
 })
