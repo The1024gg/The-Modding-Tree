@@ -56,4 +56,4 @@ addLayer("p", {
             unlocked() { return player.adds.poins.gte(2) },
 		}
 	}
-}
+})
