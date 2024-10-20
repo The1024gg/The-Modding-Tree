@@ -4,16 +4,19 @@ let options = {}
 
 function getStartOptions() {
 	return {
+		optionTab: "saving",
+
 		autosave: true,
 		msDisplay: "always",
-		theme: "default",
+		theme: null,
 		hqTree: false,
 		offlineProd: true,
 		hideChallenges: false,
 		showStory: true,
 		forceOneTab: false,
 		oldStyle: false,
-		tooltipForcing: true,
+		antiEpilepsy: false,
+		notation: "default",
 	}
 }
 
@@ -42,7 +45,7 @@ function changeTreeQuality() {
 	document.body.style.setProperty('--hqProperty3', on ? "2px 2px 4px rgba(0, 0, 0, 0.25)" : "none");
 }
 function toggleAuto(toggle) {
-	Vue.set(player[toggle[0]], [toggle[1]], !player[toggle[0]][toggle[1]]);
+	player[toggle[0]][toggle[1]] = !player[toggle[0]][toggle[1]];
 	needCanvasUpdate=true
 }
 
@@ -60,19 +63,25 @@ function milestoneShown(layer, id) {
 	switch (options.msDisplay) {
 		case "always":
 			return true;
-			break;
+			
 		case "last":
 			return (auto) || !complete || player[layer].lastMilestone === id;
-			break;
+			
 		case "automation":
 			return (auto) || !complete;
-			break;
+			
 		case "incomplete":
 			return !complete;
-			break;
 		case "never":
 			return false;
-			break;
 	}
 	return false;
+}
+
+const NT_DISPLAYS = ["FGH-J NOTATION", "HYPER-E", "CHAINED ARROWS", "FALLBACK NOTATION"];
+
+const NT_SETTINGS = ["default", "hypere", "chained", "fallback"];
+
+function adjustNotation() {
+	options.notation = NT_SETTINGS[(NT_SETTINGS.indexOf(options.notation) + 1) % NT_SETTINGS.length];
 }
