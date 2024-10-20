@@ -40,9 +40,9 @@ function canGenPoints(){
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
-		return new Decimal(0)
+		return new EN(0)
 
-	let gain = new Decimal(1)
+	let gain = new EN(1)
 	return gain
 }
 
@@ -68,7 +68,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new EN("e280000000"))
 }
 
 
